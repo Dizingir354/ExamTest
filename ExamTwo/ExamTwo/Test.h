@@ -17,9 +17,17 @@ public:
 	}
 };
 
+enum typeOfSchoolSubject
+{
+	DiscreteMath, mathAnalysis, quantumPhysics, mechanics
+};
+
 class Admin
 {
 
+public:
+	void createQuize(typeOfSchoolSubject subject);
+	void doQuize(typeOfSchoolSubject subject);
 };
 
 
@@ -38,7 +46,7 @@ public:
 	void tests();
 	void math();
 	void physics();
-	void mechanick();
+	void mechanics();
 };
 
 Student::~Student()
@@ -56,7 +64,7 @@ void Student::registration(string surNameUser, string nameUser, string passwordU
 
 void Student::tests()
 {
-	cout << "Which Test you need?\n1)Math;\n2)physics;\n3)mechanick:";
+	cout << "Which Test you need?\n1)Math;\n2)physics;\n3)mechanics: ";
 	int vibor; cin >> vibor;
 	switch (vibor)
 	{
@@ -66,6 +74,21 @@ void Student::tests()
 		physics();
 	case 3:
 		mechanick();
+	default:
+		break;
+	}
+}
+
+void Student::math()
+{
+	cout << "You reale want do in test?\n1)DiscreteMath;\n2)mathAnalysis: ";
+	int vibor; cin >> vibor;
+	switch (vibor)
+	{
+	case 1:
+		
+	case 2:
+		
 	default:
 		break;
 	}
