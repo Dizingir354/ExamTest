@@ -25,14 +25,15 @@ enum typeOfSchoolSubject
 class Admin
 {
 
+	void doQuize(typeOfSchoolSubject subject);
 public:
 	void createQuize(typeOfSchoolSubject subject);
-	void doQuize(typeOfSchoolSubject subject);
+	
 };
 
 
 
-class Student
+class Student : public Admin
 {
 	FullName name;
 	string password;
@@ -73,7 +74,7 @@ void Student::tests()
 	case 2:
 		physics();
 	case 3:
-		mechanick();
+		mechanics();
 	default:
 		break;
 	}
