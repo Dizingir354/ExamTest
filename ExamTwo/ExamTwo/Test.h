@@ -27,20 +27,42 @@ enum typeOfSchoolSubject
 	DiscreteMath, mathAnalysis, quantumPhysics, mechanics
 };
 
-class Admin : public FullName
+class Quize
 {
-	
-
-	Student* allYourStudent;
-	int sizeStudent;
 public:
+	string* quest;
+	int sizeQuest = 0;
+	string* variantAnswer;
+	int sizeAnswer = 4;
+	int numberTrueAnswer;
+	int ball;
+	typeOfSchoolSubject subject;
+};
+
+class Admin : public FullName, public Quize
+{
+	FullName name;
+	int password;
+	Quize* AllQuize;
+	int sizeQuize = 0;
+	Student* allYourStudent;
+	int sizeStudent = 0;
+public:
+	void registration(string surNameUser, string nameUser, int passwordAdmin);
 	void createStudent(string surNameUser, string nameUser, string passwordUser, int addressUser, int numberPhoneUser);
 	void deleteStudent(int pos);
 	void newCreateStudent(int pos, string surNameUser, string nameUser, string passwordUser, int addressUser, int numberPhoneUser);
 	void printResultTest();
 	void createQuize(typeOfSchoolSubject subject);
+	void createQuest();
 	void doTest(typeOfSchoolSubject subject);
 };
+
+void Admin::registration(string surNameUser, string nameUser, int passwordAdmin)
+{
+	name.createName(surNameUser, nameUser);
+	password = passwordAdmin;
+}
 
 void Admin::createStudent(string surNameUser, string nameUser, string passwordUser, int addressUser, int numberPhoneUser)
 {
@@ -100,6 +122,93 @@ void Admin::printResultTest()
 	}
 	cout << "Print name student what you want see:";
 	string name;	cin >> name;	cout << endl;
+	for (int i = 0; i < sizeStudent; i++)
+	{
+		if (name == allYourStudent[i].name.name)
+		{
+			cout << allYourStudent[i].name.name << "have " << allYourStudent[i].bal <<"bal" << endl;
+		}
+	}
+}
+
+void Admin::createQuize(typeOfSchoolSubject subject)
+{
+	sizeQuize++;
+	AllQuize[sizeQuize].subject = subject;
+	createQuest();
+	cout << "Want you create to Quest?\n1)Yes\n2)No " << endl;	int vibor;	cin >> vibor;
+	if (vibor == 1)
+	{
+		createQuest();
+		cout << "Want you create to Quest?\n1)Yes\n2)No " << endl;	cin >> vibor;
+		if (vibor == 1)
+		{
+			createQuest();
+			cout << "Want you create to Quest?\n1)Yes\n2)No " << endl;	cin >> vibor;
+			if (vibor == 1)
+			{
+				createQuest();
+				cout << "Want you create to Quest?\n1)Yes\n2)No " << endl;	cin >> vibor;
+				if (vibor == 1)
+				{
+					createQuest();
+					cout << "Want you create to Quest?\n1)Yes\n2)No " << endl;	cin >> vibor;
+					if (vibor == 1)
+					{
+						createQuest();
+						cout << "Want you create to Quest?\n1)Yes\n2)No " << endl;	cin >> vibor;
+					}
+				}
+			}
+		}
+	}
+	else if (vibor == 2)
+		cout << "Okey" << endl;
+	else
+		cout << "You no have variant three, this variant two." << endl;
+}
+
+void Admin::createQuest()
+{
+	sizeQuest++;
+	cout << "print your First Quest ";	cin >> AllQuize[sizeQuize].quest[sizeQuize];
+	for (int i = 0; i < sizeAnswer; i++)
+	{
+		cout << "print your " << i << " question";	cin >> AllQuize[sizeQuize].variantAnswer[i];
+	}
+	cout << "print number true answer ";	cin >> AllQuize[sizeQuize].numberTrueAnswer;
+}
+
+void Admin::doTest(typeOfSchoolSubject subject)
+{
+	cout << "print your name ";		string yourName;	cin >> yourName;	cout << ".\n";
+	int answer;
+	for (int i = 0; i < sizeStudent; i++)
+	{
+		if (yourName == allYourStudent[i].name.name)
+		{
+			for (int j = 0; j < sizeQuize; j++)
+			{
+				if (subject == AllQuize[j].subject)
+				{
+					for (int k = 0; k < sizeQuest; k++)
+					{
+						cout << "your " << k << " question " << quest[k];
+						cin >> answer;
+						if (numberTrueAnswer == answer)
+						{
+							cout << "it's true answer" << endl;
+							ball++;
+						}
+						else
+						{
+							cout << "it's false answer" << endl;
+						}
+					}
+				}
+			}
+		}
+	}
 }
 
 class Student : public Admin
@@ -109,6 +218,7 @@ private:
 	string password;
 	int address;
 	int numberPhone;
+	int bal;
 
 public:
 	Student() { cout << "Constr!" << endl; }
