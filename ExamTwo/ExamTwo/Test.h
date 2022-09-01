@@ -146,8 +146,6 @@ void Admin::createQuize(typeOfSchoolSubject subject)
 		else
 			cout << "You no have variant three, this variant two." << endl;
 	}
-	
-	
 }
 
 void Admin::createQuest()
