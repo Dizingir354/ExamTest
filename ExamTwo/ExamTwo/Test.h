@@ -135,43 +135,25 @@ void Admin::createQuize(typeOfSchoolSubject subject)
 {
 	sizeQuize++;
 	AllQuize[sizeQuize].subject = subject;
-	createQuest();
-	cout << "Want you create to Quest?\n1)Yes\n2)No " << endl;	int vibor;	cin >> vibor;
-	if (vibor == 1)
+	for (size_t i = 0; i < sizeQuest; i++)
 	{
 		createQuest();
-		cout << "Want you create to Quest?\n1)Yes\n2)No " << endl;	cin >> vibor;
+		cout << "Want you create to Quest?\n1)Yes\n2)No " << endl;	int vibor;	cin >> vibor;
 		if (vibor == 1)
-		{
-			createQuest();
-			cout << "Want you create to Quest?\n1)Yes\n2)No " << endl;	cin >> vibor;
-			if (vibor == 1)
-			{
-				createQuest();
-				cout << "Want you create to Quest?\n1)Yes\n2)No " << endl;	cin >> vibor;
-				if (vibor == 1)
-				{
-					createQuest();
-					cout << "Want you create to Quest?\n1)Yes\n2)No " << endl;	cin >> vibor;
-					if (vibor == 1)
-					{
-						createQuest();
-						cout << "Want you create to Quest?\n1)Yes\n2)No " << endl;	cin >> vibor;
-					}
-				}
-			}
-		}
+			sizeQuest++;
+		else if (vibor == 2)
+			cout << "Okey" << endl;
+		else
+			cout << "You no have variant three, this variant two." << endl;
 	}
-	else if (vibor == 2)
-		cout << "Okey" << endl;
-	else
-		cout << "You no have variant three, this variant two." << endl;
+	
+	
 }
 
 void Admin::createQuest()
 {
 	sizeQuest++;
-	cout << "print your First Quest ";	cin >> AllQuize[sizeQuize].quest[sizeQuize];
+	cout << "print your Quest ";	cin >> AllQuize[sizeQuize].quest[sizeQuize];
 	for (int i = 0; i < sizeAnswer; i++)
 	{
 		cout << "print your " << i << " question";	cin >> AllQuize[sizeQuize].variantAnswer[i];
