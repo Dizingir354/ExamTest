@@ -1,6 +1,9 @@
 #pragma once
 #include <iostream>
+#include <string>
 
+#include <iomanip>
+#include <fstream>
 
 using namespace std;
 
@@ -41,14 +44,16 @@ public:
 
 class Admin : public FullName, public Quize
 {
+	
+public:
 	FullName name;
-	int password;
+	string password;
 	Quize* AllQuize;
 	int sizeQuize = 0;
 	Student* allYourStudent;
 	int sizeStudent = 0;
-public:
-	void registration(string surNameUser, string nameUser, int passwordAdmin);
+
+	void registration(string surNameUser, string nameUser, string passwordAdmin);
 	void createStudent(string surNameUser, string nameUser, string passwordUser, int addressUser, int numberPhoneUser);
 	void deleteStudent(int pos);
 	void newCreateStudent(int pos, string surNameUser, string nameUser, string passwordUser, int addressUser, int numberPhoneUser);
@@ -58,7 +63,7 @@ public:
 	void doTest(typeOfSchoolSubject subject);
 };
 
-void Admin::registration(string surNameUser, string nameUser, int passwordAdmin)
+void Admin::registration(string surNameUser, string nameUser, string passwordAdmin)
 {
 	name.createName(surNameUser, nameUser);
 	password = passwordAdmin;
@@ -230,8 +235,8 @@ void Student::deleteReg()
 	deleteStudent(-1);
 	deleteName();
 	password = nullptr;
-	address = nullptr;
-	numberPhone = nullptr;
+	address = 0;
+	numberPhone = 0;
 }
 
 void Student::tests()
