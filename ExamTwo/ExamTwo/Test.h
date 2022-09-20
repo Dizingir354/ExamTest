@@ -50,7 +50,7 @@ public:
 	string password;
 	Quize* AllQuize;
 	int sizeQuize = 0;
-	Student* allYourStudent;
+	Student* allYourStudent = new Student[sizeStudent];
 	int sizeStudent = 0;
 
 	void registration(string surNameUser, string nameUser, string passwordAdmin);
@@ -207,14 +207,14 @@ void Admin::doTest(typeOfSchoolSubject subject)
 
 class Student : public Admin
 {
-private:
+
+public:
 	FullName name;
 	string password;
 	int address;
 	int numberPhone;
 	int bal;
 
-public:
 	Student() { cout << "Constr!" << endl; }
 	~Student();
 	void registration(string surNameUser, string nameUser, string passwordUser, int addressUser, int numberPhoneUser);
