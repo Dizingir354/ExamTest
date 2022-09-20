@@ -1,16 +1,82 @@
 #include <iostream>
 #include <string>
 #include "Test.h"
+#include "Menu.h"
 
 using namespace std;
 
 
 int main()
 {
+	Admin admin;
+	string surNameAdmin;
+	string nameAdmin;
+	string passwordAdmin;
+	Student student;
+	int vibor;
+	while (true)
+	{
+		cout << "You`re 1)admin or 2)student "; cin >> vibor; cout << endl;
+		system("cls");
+		if (vibor == 1)
+		{
+			size_t c = Menu::select_vertical({
+			"Реєстрація",
+			"Вхід",
+			"Закрити програму" },
+			HorizontalAlignment::Center, 5);
+
+			switch (c)
+			{
+			case 0:
+				system("cls");
+				
+				cout << "Print surName"; cin >> surNameAdmin;
+				cout << "Print Name"; cin >> nameAdmin;
+				cout << "Print password"; cin >> passwordAdmin;
+				admin.registration(surNameAdmin, nameAdmin, passwordAdmin);
+				break;
+			case 1:
+				system("cls");
+
+				break;
+			case 2:
+				exit(0); //в случае с выходом, тут есть два варианта. если это должен быть выход вообще из программы, то есть завершить, то вот этот вариант.
+			default:
+				break;
+			}
+		}
+		else
+		{
+			size_t c = Menu::select_vertical({
+			"Реєстрація",
+			"Вхід",
+			"Закрити програму" },
+			HorizontalAlignment::Center, 5);
+
+			switch (c)
+			{
+			case 0:
+				system("cls");
+				//при нажатии на первый пункт меню должен выполняться кусок кода находящийся здесь.
+				//ну и также со всеми остальными пунктами
+				break;
+			case 1:
+				system("cls");
+
+				break;
+			case 2:
+				exit(0); //в случае с выходом, тут есть два варианта. если это должен быть выход вообще из программы, то есть завершить, то вот этот вариант.
+			default:
+				break;
+			}
+		}
+	}
+
 	cout << "__________________________________________________________________________________________________________________________\n_________________________________________________________________________________________\n";
 	cout << "																	Admin mode\n";
-	int vibor;
-	Admin admin;
+	
+	
 	string surNameUser; string nameUser; string passwordAdmin; string passwordUser; int addressUser; int numberPhoneUser;
 	cout << "print your surname ";	cin >> surNameUser;	cout << endl;
 	cout << "print your name ";	cin >> nameUser; cout << endl;

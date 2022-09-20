@@ -9,10 +9,10 @@ using namespace std;
 
 class FullName
 {
+public:
 	string surName;
 	string name;
 
-public:
 	void createName(string surNameUser, string nameUser)
 	{
 		surName = surNameUser;
@@ -54,6 +54,7 @@ public:
 	int sizeStudent = 0;
 
 	void registration(string surNameUser, string nameUser, string passwordAdmin);
+	void login(string surNameUser, string nameUser, string passwordAdmin, bool loginOrNot);
 	void createStudent(string surNameUser, string nameUser, string passwordUser, int addressUser, int numberPhoneUser);
 	void deleteStudent(int pos);
 	void newCreateStudent(int pos, string surNameUser, string nameUser, string passwordUser, int addressUser, int numberPhoneUser);
@@ -67,6 +68,14 @@ void Admin::registration(string surNameUser, string nameUser, string passwordAdm
 {
 	name.createName(surNameUser, nameUser);
 	password = passwordAdmin;
+}
+
+void Admin::login(string surNameUser, string nameUser, string passwordAdmin, bool loginOrNot)
+{
+	if (surNameUser == name.surName && nameUser == name.name && passwordAdmin == password)
+		loginOrNot == true;
+	else
+		loginOrNot == false;
 }
 
 void Admin::createStudent(string surNameUser, string nameUser, string passwordUser, int addressUser, int numberPhoneUser)
