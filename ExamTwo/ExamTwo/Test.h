@@ -73,9 +73,9 @@ void Admin::registration(string surNameUser, string nameUser, string passwordAdm
 void Admin::login(string surNameUser, string nameUser, string passwordAdmin, bool loginOrNot)
 {
 	if (surNameUser == name.surName && nameUser == name.name && passwordAdmin == password)
-		loginOrNot == true;
+		loginOrNot = true;
 	else
-		loginOrNot == false;
+		loginOrNot = false;
 }
 
 void Admin::createStudent(string surNameUser, string nameUser, string passwordUser, int addressUser, int numberPhoneUser)
