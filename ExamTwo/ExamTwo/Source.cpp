@@ -148,13 +148,47 @@ int main()
 							break;
 						case 4:
 							system("cls");
+							bool flag = false;
+							while (true)
+							{
+								system("cls");
+								int c = Menu::select_vertical({
+								"DiscreteMath",
+								"mathAnalysis",
+								"quantumPhysics",
+								"mechanics" },
+								HorizontalAlignment::Center, 5);
 
+								switch (c)
+								{
+								case 0:
+									system("cls");
+									admin.doTest(DiscreteMath);
+									break;
+								case 1:
+									system("cls");
+									admin.doTest(mathAnalysis);
+									break;
+								case 2:
+									system("cls");
+									admin.doTest(quantumPhysics);
+									break;
+								case 3:
+									system("cls");
+									admin.doTest(mechanics);
+									break;
+								case 4:
+									flag = true;
+									break;
+								default:
+									break;
+								}
+
+								if (flag)
+									break;
 							break;
 						case 5:
 							system("cls");
-
-							break;
-						case 6:
 							flag = true;
 							break;
 						default:
