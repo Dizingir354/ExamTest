@@ -85,7 +85,7 @@ int main()
 							cout << "Print phone"; cin >> numberPhoneUser;
 							for (size_t i = 0; i < admin.sizeStudent; i++)
 							{
-								if(numberPhoneUser == admin.allYourStudent[i].numberPhone)
+								if (numberPhoneUser == admin.allYourStudent[i].numberPhone)
 									admin.deleteStudent(i);
 							}
 							break;
@@ -104,7 +104,7 @@ int main()
 							break;
 						case 3:
 							system("cls");
-							
+
 							bool flag = false;
 							while (true)
 							{
@@ -186,17 +186,79 @@ int main()
 
 								if (flag)
 									break;
-							break;
+								break;
 						case 5:
 							system("cls");
 							flag = true;
 							break;
 						default:
 							break;
-						}
+							}
 
-						if (flag)
+							if (flag)
+								break;
+						}
+					}
+					break;
+			case 2:
+				exit(0);
+			default:
+				break;
+				}
+				break;
+			}
+		case 1:
+			system("cls");
+			size_t c = Menu::select_vertical({
+			"registration",
+			"login",
+			"exit" },
+			HorizontalAlignment::Center, 5);
+
+			switch (c)
+			{
+			case 0:
+				system("cls");
+				cout << "Print sur name"; cin >> surNameUser;
+				cout << "Print name"; cin >> nameUser;
+				cout << "Print password"; cin >> passwordUser;
+				cout << "Print address"; cin >> addressUser;
+				cout << "Print phone"; cin >> numberPhoneUser;
+				for (size_t i = 0; i < admin.sizeStudent; i++)
+				{
+					if (numberPhoneUser == admin.allYourStudent[i].numberPhone)
+						admin.newCreateStudent(i, surNameUser, nameUser, passwordUser, addressUser, numberPhoneUser);
+				}
+				break;
+			case 1:
+				system("cls");
+				cout << "Print sur name"; cin >> surNameUser;
+				cout << "Print name"; cin >> nameUser;
+				cout << "Print password"; cin >> passwordUser;
+				for (size_t i = 0; i < admin.sizeStudent; i++)
+				{
+					if (nameUser == admin.allYourStudent[i].name && surNameUser == admin.allYourStudent[i].surName && passwordUser == admin.allYourStudent[i].password)
+					{
+						system("cls");
+						size_t c = Menu::select_vertical({
+						"do test",
+						"exit" },
+						HorizontalAlignment::Center, 5);
+
+						switch (c)
+						{
+						case 0:
+							system("cls");
+							student.tests();
 							break;
+						case 1:
+							system("cls");
+							exit(0);
+							break;
+						default:
+							break;
+							system("cls");
+						}
 					}
 				}
 				break;
@@ -206,38 +268,12 @@ int main()
 				break;
 			}
 			break;
-		case 1:
-			system("cls");
-			size_t c = Menu::select_vertical({
-			"Реєстрація",
-			"Вхід",
-			"Закрити програму" },
-			HorizontalAlignment::Center, 5);
-
-			switch (c)
-			{
-			case 0:
-				system("cls");
-				//при нажатии на первый пункт меню должен выполняться кусок кода находящийся здесь.
-				//ну и также со всеми остальными пунктами
-				break;
-			case 1:
-				system("cls");
-
-				break;
-			case 2:
-				exit(0); //в случае с выходом, тут есть два варианта. если это должен быть выход вообще из программы, то есть завершить, то вот этот вариант.
-			default:
-				break;
-			}
-			break;
 		case 2:
 			exit(0);
 		default:
 			break;
-		system("cls");
-	}
-
+			system("cls");
+		}
 	system("pause");
 	return 0;
 }

@@ -218,7 +218,6 @@ public:
 	Student() { cout << "Constr!" << endl; }
 	~Student();
 	void registration(string surNameUser, string nameUser, string passwordUser, int addressUser, int numberPhoneUser);
-	void deleteReg();
 	void tests();
 	void math();
 	void physics();
@@ -237,15 +236,6 @@ void Student::registration(string surNameUser, string nameUser, string passwordU
 	password = passwordUser;
 	address = addressUser;
 	numberPhone = numberPhoneUser;
-}
-
-void Student::deleteReg()
-{
-	deleteStudent(-1);
-	deleteName();
-	password = nullptr;
-	address = 0;
-	numberPhone = 0;
 }
 
 void Student::tests()
