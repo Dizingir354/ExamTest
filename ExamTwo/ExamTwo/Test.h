@@ -4,6 +4,7 @@
 
 #include <iomanip>
 #include <fstream>
+//#include <list>
 
 using namespace std;
 
@@ -50,6 +51,7 @@ public:
 	string password;
 	Quize* AllQuize;
 	int sizeQuize = 0;
+	//list<Student>* students = new list<Student>();
 	Student* allYourStudent = new Student[sizeStudent];
 	int sizeStudent = 0;
 
@@ -80,16 +82,22 @@ void Admin::login(string surNameUser, string nameUser, string passwordAdmin, boo
 
 void Admin::createStudent(string surNameUser, string nameUser, string passwordUser, int addressUser, int numberPhoneUser)
 {
-	allYourStudent[sizeStudent]->name.createName(surNameUser, nameUser);
-	allYourStudent[sizeStudent]->password = passwordUser;
-	allYourStudent[sizeStudent]->address = addressUser;
-	allYourStudent[sizeStudent]->numberPhone = numberPhoneUser;
+	sizeStudent++;
+	//Student * s = new Student();
+	//s.createName(surNameUser);
+	allYourStudent[sizeStudent].name.createName(surNameUser, nameUser);
+	allYourStudent[sizeStudent].password = passwordUser;
+	allYourStudent[sizeStudent].address = addressUser;
+	allYourStudent[sizeStudent].numberPhone = numberPhoneUser;
+	
 }
 
 void Admin::deleteStudent(int pos)
 {
+	
 	if (pos == -1)
 	{
+		sizeStudent--;
 		allYourStudent[sizeStudent].deleteName();
 		allYourStudent[sizeStudent]->password = nullptr;
 		allYourStudent[sizeStudent]->address = nullptr;
@@ -98,9 +106,12 @@ void Admin::deleteStudent(int pos)
 	else
 	{
 		allYourStudent[pos].deleteName();
-		allYourStudent[pos]->password = nullptr;
-		allYourStudent[pos]->address = nullptr;
-		allYourStudent[pos]->numberPhone = nullptr;
+		allYourStudent[pos].name.name = allYourStudent[sizeStudent].name.name;
+		allYourStudent[pos].name.surName = allYourStudent[sizeStudent].name.surName;
+		allYourStudent[pos]->password = allYourStudent[sizeStudent]->password;
+		allYourStudent[pos]->address = allYourStudent[sizeStudent]->password;
+		allYourStudent[pos]->numberPhone = allYourStudent[sizeStudent]->password;
+		sizeStudent--;
 	}
 }
 

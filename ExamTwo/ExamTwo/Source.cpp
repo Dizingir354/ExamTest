@@ -2,6 +2,7 @@
 #include <string>
 #include "Test.h"
 #include "Menu.h"
+#include "application.h"
 
 using namespace std;
 
@@ -42,11 +43,14 @@ int main()
 			{
 			case 0:
 				system("cls");
-
-				cout << "Print surName"; cin >> surNameAdmin;
-				cout << "Print Name"; cin >> nameAdmin;
-				cout << "Print password"; cin >> passwordAdmin;
-				admin.registration(surNameAdmin, nameAdmin, passwordAdmin);
+				if (login == true)
+				{
+					cout << "Print surName"; cin >> surNameAdmin;
+					cout << "Print Name"; cin >> nameAdmin;
+					cout << "Print password"; cin >> passwordAdmin;
+					admin.registration(surNameAdmin, nameAdmin, passwordAdmin);
+					login = true;
+				}
 				break;
 			case 1:
 				system("cls");
@@ -56,11 +60,10 @@ int main()
 				admin.login(surNameAdmin, nameAdmin, passwordAdmin, login);
 				if (login == true);
 				{
-					bool flag = false;
 					while (true)
 					{
 						system("cls");
-						int c = Menu::select_vertical({
+						size_t c = Menu::select_vertical({
 							"create student",
 							"delete student",
 							"change student",
@@ -83,7 +86,7 @@ int main()
 						case 1:
 							system("cls");
 							cout << "Print phone"; cin >> numberPhoneUser;
-							for (size_t i = 0; i < admin.sizeStudent; i++)
+							for (int i = 0; i < admin.sizeStudent; i++)
 							{
 								if (numberPhoneUser == admin.allYourStudent[i].numberPhone)
 									admin.deleteStudent(i);
@@ -96,7 +99,7 @@ int main()
 							cout << "Print password student"; cin >> passwordUser;
 							cout << "Print address student"; cin >> addressUser;
 							cout << "Print phone student"; cin >> numberPhoneUser;
-							for (size_t i = 0; i < admin.sizeStudent; i++)
+							for (int i = 0; i < admin.sizeStudent; i++)
 							{
 								if (numberPhoneUser == admin.allYourStudent[i].numberPhone)
 									admin.newCreateStudent(i, surNameUser, nameUser, passwordUser, addressUser, numberPhoneUser);
@@ -189,24 +192,20 @@ int main()
 								break;
 						case 5:
 							system("cls");
-							flag = true;
 							break;
 						default:
 							break;
 							}
-
-							if (flag)
-								break;
 						}
 					}
-					break;
+				}
+				break;
 			case 2:
 				exit(0);
 			default:
 				break;
-				}
-				break;
 			}
+			break;
 		case 1:
 			system("cls");
 			size_t c = Menu::select_vertical({
@@ -224,7 +223,7 @@ int main()
 				cout << "Print password"; cin >> passwordUser;
 				cout << "Print address"; cin >> addressUser;
 				cout << "Print phone"; cin >> numberPhoneUser;
-				for (size_t i = 0; i < admin.sizeStudent; i++)
+				for (int i = 0; i < admin.sizeStudent; i++)
 				{
 					if (numberPhoneUser == admin.allYourStudent[i].numberPhone)
 						admin.newCreateStudent(i, surNameUser, nameUser, passwordUser, addressUser, numberPhoneUser);
@@ -235,7 +234,7 @@ int main()
 				cout << "Print sur name"; cin >> surNameUser;
 				cout << "Print name"; cin >> nameUser;
 				cout << "Print password"; cin >> passwordUser;
-				for (size_t i = 0; i < admin.sizeStudent; i++)
+				for (int i = 0; i < admin.sizeStudent; i++)
 				{
 					if (nameUser == admin.allYourStudent[i].name && surNameUser == admin.allYourStudent[i].surName && passwordUser == admin.allYourStudent[i].password)
 					{
@@ -273,7 +272,8 @@ int main()
 		default:
 			break;
 			system("cls");
-		}
+		}	
+	}
 	system("pause");
 	return 0;
 }
