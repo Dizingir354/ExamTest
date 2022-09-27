@@ -4,7 +4,6 @@
 
 #include <iomanip>
 #include <fstream>
-//#include <list>
 
 using namespace std;
 
@@ -51,7 +50,6 @@ public:
 	string password;
 	Quize* AllQuize;
 	int sizeQuize = 0;
-	//list<Student>* students = new list<Student>();
 	Student* allYourStudent = new Student[sizeStudent];
 	int sizeStudent = 0;
 
@@ -83,8 +81,6 @@ void Admin::login(string surNameUser, string nameUser, string passwordAdmin, boo
 void Admin::createStudent(string surNameUser, string nameUser, string passwordUser, int addressUser, int numberPhoneUser)
 {
 	sizeStudent++;
-	//Student * s = new Student();
-	//s.createName(surNameUser);
 	allYourStudent[sizeStudent].name.createName(surNameUser, nameUser);
 	allYourStudent[sizeStudent].password = passwordUser;
 	allYourStudent[sizeStudent].address = addressUser;
